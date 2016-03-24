@@ -1,0 +1,17 @@
+#	XZITE SECURITY
+# For security reasons, Option followsymlinks cannot be overridden.
+#Options +SymLinksIfOwnerMatch
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^nosotros/ index.php?m=nosotros
+
+RewriteRule ^tarifa-impresa/ index.php?m=impresa
+RewriteRule ^tarifa-online/ index.php?m=online
+
+RewriteRule ^acceso/ index.php?m=acceso
+
+RewriteRule ^sicer/ index.php?m=sicer
+
+RewriteRule ^contacto/ index.php?m=contacto

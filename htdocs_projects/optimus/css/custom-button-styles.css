@@ -1,0 +1,115 @@
+
+
+/*buttons*/
+
+.btn, .wpcf7-submit {
+    -moz-user-select: none;
+    background-image: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration:none;
+    transition: background-color 0.2s ease 0s;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.btn.btn-sm, .wpcf7-submit {
+    padding: 11px 17px;
+    font-size: 14px;
+}
+
+.btn, .wpcf7-submit {
+  border-radius: 0;
+  border-radius: 4px;
+  background-color: #1874c1;
+  color: #ffffff;
+}
+.btn:hover, .btn:active, .btn:focus, .wpcf7-submit:hover, .wpcf7-submit:active, .wpcf7-submit:focus {
+  background-color: #292929;
+  color: #fff;
+  border:0;
+}
+
+.btn.style-1, .vc_btn.style-1   { 
+  border-radius: 4px;
+  background-color: #1874c1;
+  color: #fff!important;
+}
+.btn.style-1:hover, .btn.style-1:active, .btn.style-1:focus, .vc_btn.style-1:hover, .vc_btn.style-1:active, .vc_btn.style-1:focus  {
+  background-color: #000000;
+  color: #fff!important;
+}
+
+
+.btn.slider  { 
+  border-radius: 4px;
+  background-color: #1874c1;
+  color: #fff;
+}
+.btn.slider:hover, .btn.slider:active, .btn.slider:focus  {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
+
+
+.btn.style-2, .vc_btn.style-2  {
+  border-radius: 4px;
+  border: 2px solid #000000;
+  background-color: #000000;
+  color: #fff!important;
+}
+
+.btn.style-2:hover, .btn.style-2:active, .btn.style-2:focus, .vc_btn.style-2:hover, .vc_btn.style-2:active, .vc_btn.style-2:focus   {
+  background-color: #ffffff;
+  color: #ffffff!important;
+  border-color: #000000;
+  border: 2px solid #000000;
+}
+
+.btn.style-3, .vc_btn.style-3  {
+  border: 2px solid #ffffff;;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #ffffff!important;
+}
+.btn.style-3:hover, .btn.style-3:active, .btn.style-3:focus, .vc_btn.style-3:hover, .vc_btn.style-3:active, .vc_btn.style-3:focus  {
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+  color: #1874c1!important;
+}
+
+.btn.style-4, .vc_btn.style-4   {
+  padding-left: 0;
+  background-color: transparent;
+  color: #1874c1!important;
+  border: none;
+}
+
+.btn.style-4:hover, .btn.style-4:active, .btn.style-4:focus, .vc_btn.style-4:hover, .vc_btn.style-4:active, .vc_btn.style-4:focus   {
+  padding-left: 0;
+  background: none;
+  color: #94cfff!important;
+  border: none;
+  border-color: transparent;
+  outline: none;
+}
+
+.btn.style-5, .vc_btn.style-5   {
+  background-color: #c3c3c3!important;
+  color: #fff!important;
+  border: none;
+}
+
+.btn.style-5:hover, .btn.style-5:active, .btn.style-5:focus, .vc_btn.style-5:hover, .vc_btn.style-5:active, .vc_btn.style-5:focus   {
+  background-color: #737373!important;
+  color: #fff!important;
+}
