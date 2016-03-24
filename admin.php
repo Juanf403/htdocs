@@ -196,7 +196,6 @@ if ( $_SESSION['userTp'] == "Administrador" ){
 ?>
 										<li> <a href="admin.php?m=bocetos"> <i class="fa fa-angle-right"></i> <span>Bocetos</span> </a> </li>
 										<li> <a href="admin.php?m=vistaTickets"> <i class="fa fa-angle-right"></i><span class="badge bg-danger pull-right" id="solicitudes"><?php echo $cs ; ?></span> <span>Tickets</span> </a> </li>
-										<li> <a href="admin.php?m=calendario"> <i class="fa fa-angle-right"></i> <span>Calendario</span> </a> </li>
 <?php
 									}
 									if ($_SESSION['userTp']== "Administrador") {

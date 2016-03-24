@@ -17,9 +17,17 @@
       </div>
       <div class="modal-body" id = "bg">
       <?php
+      /*
+        ya en el server
       $serv = "localhost";
       $user = "root";
       $pass = "F403CentosAdmin";
+      $data = "f403_interno";
+      */
+      /*    Local    */
+      $serv = "localhost";
+      $user = "root";
+      $pass = "";
       $data = "f403_interno";
 
       // Create connection
