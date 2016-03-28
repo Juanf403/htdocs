@@ -1,4 +1,5 @@
 <?php
+//antes de actualizar la bd en el server, copiar todo lo que tiene el campo tarea a descricpion, si no lo haces se borraran por que el campo tara solo tendra espacio apra 30 caracteres y sera varchar.
 @session_start();
 date_default_timezone_set("America/Mexico_City");
 
@@ -151,9 +152,10 @@ if ( $_SESSION['userTp'] == "Administrador" ){
 <link rel="stylesheet" href="css/font.css" type="text/css" />
 <link rel="stylesheet" href="css/app.v1.css" type="text/css" />
 <link rel="stylesheet" href="css/fileinput.css" type="text/css" />
-<script src="js/app.v1.js"></script>
-<script src="js/app.plugin.js"></script>
-<script src="js/fileinput.min.js"></script>
+<link href="/css/fuelux.css" rel="stylesheet" type="text/css">
+<link href="/css/fullcalendar.css" rel="stylesheet" type="text/css">
+<link href="/css/theme.css" rel="stylesheet" type="text/css">
+
 <!--[if lt IE 9]>
 <script src="http://flatfull.com/themes/note/js/ie/html5shiv.js"></script>
 <script src="http://flatfull.com/themes/note/js/ie/respond.min.js"></script>
@@ -245,7 +247,15 @@ if ( $_SESSION['userTp'] == "Administrador" ){
 		</section>
 	</section>
 	<!-- Bootstrap -->
-	<!-- App -->
-	<script src="js/app.plugin.js"></script>
+	<script src="js/app.v1.js"></script>
+	<script src="js/fileinput.min.js"></script>
+	<!-- fuelux -->
+    <script src="/js/fuelux.js"></script>
+    <!-- fullcalendar -->
+    <script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/js/fullcalendar.min.js"></script>
+    <script src="/js/demo.js"></script>
+    <script src="/js/app.plugin.js"></script>
 </body>
 </html>

@@ -1,19 +1,3 @@
-<?php 
-	if (isset($_GET['download'])) {
-			$archivo = $_GET['download'];
-			$resultado = mysql_fetch_object(mysql_query("SELECT archivo from tareas WHERE idtareas=".$archivo." LIMIT 1"));
-			$file = 'php/archivos/'.$resultado->archivo;
-
-			if (file_exists($file)) {
-				header("Content-Disposition: attachment; filename=".$resultado->archivo);
-				/*header("Content-Type: application/octet-stream");
-				header("Content-length: ".filesize($file));*/
-				readfile($file);
-			}
-
-
-		}
- ?>
 <section class="panel panel-default pos-rlt clearfix">
 
 	<header class="panel-heading"> <i class="fa fa-list"></i> Tareas</header>

@@ -4,9 +4,10 @@ if ( isset($_POST['tarea']) ){
 	$asignar = mysql_real_escape_string($_POST['asignar']);
 	$fecha 	 = date("Y/m/d");
 	$tarea   = mysql_real_escape_string($_POST['tarea']);
+	$descrip = mysql_real_escape_string($_POST['descripcion']);
 	
 
-	if ( mysql_query("INSERT INTO tareas(idcreado,idasignado,fecha,tarea,estado) VALUES ('".$_SESSION['userId']."','".$asignar."','".$fecha."','".$tarea."','Pendiente')") ){
+	if ( mysql_query("INSERT INTO tareas(idcreado,idasignado,fecha,tarea,estado,descripcion) VALUES ('".$_SESSION['userId']."','".$asignar."','".$fecha."','".$tarea."','Pendiente','".$descrip."')") ){
 		if($_FILES["archivo"]["name"][0]){
 			$carpetaDestino ="php/archivos/";
 	        for($i=0;$i<count($_FILES["archivo"]["name"]);$i++) {  
@@ -72,9 +73,17 @@ if ( isset($_POST['tarea']) ){
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Tarea</label>
 								<div class="col-lg-10">
-									<textarea name="tarea" class="form-control" style="height:200px;"></textarea>
+									<input name="tarea" type="text" class="form-control">
 								</div>
 							</div>							
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="col-md-2 control-label" >Descripcion</label>
+								<div class="col-md-10">
+									<textarea name="descripcion" class="form-control" style="height:200px;"></textarea>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">

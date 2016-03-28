@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html class="app" lang="en">
-<head>
-    <link href="/css/font.css" rel="stylesheet" type="text/css">
-    <link href="/css/fuelux.css" rel="stylesheet" type="text/css">
-    <link href="/css/fullcalendar.css" rel="stylesheet" type="text/css">
-    <link href="/css/theme.css" rel="stylesheet" type="text/css">
-    <link href="/css/app.v1.css" rel="stylesheet" type="text/css">
-</head>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" >
   <div class="modal-dialog" role="document">
@@ -17,47 +8,25 @@
       </div>
       <div class="modal-body" id = "bg">
       <?php
-      /*
-        ya en el server
-      $serv = "localhost";
-      $user = "root";
-      $pass = "F403CentosAdmin";
-      $data = "f403_interno";
-      */
-      /*    Local    */
-      $serv = "localhost";
-      $user = "root";
-      $pass = "";
-      $data = "f403_interno";
-
-      // Create connection
-$conn = mysqli_connect($serv, $user, $pass, $data);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-        if (isset($_POST['crear'])) {
-            # code...
-            $title       = mysql_real_escape_string($_POST['title']);
-            $start       = mysql_real_escape_string($_POST['start']);
-            $end         = mysql_real_escape_string($_POST['end']);
-            $para        = mysql_real_escape_string($_POST['para']);
-            $descripcion = mysql_real_escape_string($_POST['descripcion']);
-
-            $sql = "INSERT INTO evenement SET title='".$title."',start='".$start."',end='".$end."', descripcion='".$descripcion."'";
-
-            if (mysqli_query($conn, $sql)) {
-                echo "New record created successfully";
+      if (isset($_POST['crear'])) {
+        $title       = mysql_real_escape_string($_POST['title']);
+        $start       = mysql_real_escape_string($_POST['start']);
+        $end         = mysql_real_escape_string($_POST['end']);
+        $para        = mysql_real_escape_string($_POST['para']);
+        $descripcion = mysql_real_escape_string($_POST['descripcion']);
+        
+        if (mysql_query("INSERT INTO evenement SET title='".$title."',start='".$start."',end='".$end."', descripcion='".$descripcion."'")) {
+            $errorMsg = '<div class="alert alert-success">
+            <i class="fa fa-check"></i> Evento agregado correctamente.
+            </div>';
             } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                $errorMsg = '<div class="alert alert-danger">
+                <i class="fa fa-times"></i> Error, intenta nuevamente.
+                </div>';
+                }
             }
-
-            mysqli_close($conn);
-         //   header ("location : fullcalendar.php");
-        }
-         ?>
+        ?>
         <form role="form" method = "post">
-
             <div class="form-group">
                 <input class="form-control" placeholder="Evento sin Titulo" type=
                 "text" name = "title">
@@ -89,11 +58,11 @@ if (!$conn) {
                 </div>
             </div>
             <div class="modal-footer" id="bg">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="submit"  name = "crear" class="btn btn-primary">Crear Evento</button>
-      </div>
-        </form>
-    </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit"  name = "crear" class="btn btn-primary">Crear Evento</button>
+            </div>
+       </form>
+       </div>
     </div>
   </div>
 </div>
@@ -101,68 +70,38 @@ if (!$conn) {
     <section class="panel panel-default pos-rlt clearfix">
         <section class="hbox stretch">
             <section id="content">
-                        <section class="scrollable wrapper">
-                            
-                                <header class=
-                                "panel-heading bg-light clearfix">
-                                    <div class="btn-group pull-right"
-                                    data-toggle="buttons">
-                                        <label class=
-                                        "btn btn-sm btn-bg btn-default active"
-                                        id="monthview"><input name=
-                                        "options" type=
-                                        "radio">Mes</label>
-                                        <label class=
-                                        "btn btn-sm btn-bg btn-default"
-                                        id="weekview"><input name=
-                                        "options" type=
-                                        "radio">Semana</label>
-                                        <label class=
-                                        "btn btn-sm btn-bg btn-default"
-                                        id="dayview"><input name=
-                                        "options" type=
-                                        "radio">D&iacutea</label>
-                                    </div>
-                                    <div class="btn-group" data-toggle="modal" data-target="#myModal">
-                                        <button class="btn btn-sm btn-dark btn-icon"title="Agregar Evento" type="button">
-                                            <i class="fa fa-plus" ></i>
-                                        </button>
-                                        <div class="btn-group hidden-nav-xs">
-                                        <button class="btn btn-sm btn-primary"
-                                        type="submit">Agregar Evento <span class="caret"></span>
-                                        </button>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class="calendar" id="calendar">
+                <section class="scrollable wrapper">
+                    <header class="panel-heading bg-light clearfix">
+                        <div class="btn-group pull-right" data-toggle="buttons">
+                            <label class="btn btn-sm btn-bg btn-default active" id="monthview"><input name="options" type="radio">Mes</label>
+                            <label class="btn btn-sm btn-bg btn-default"id="weekview"><input name="options" type="radio">Semana</label>
+                            <label class="btn btn-sm btn-bg btn-default"id="dayview"><input name="options" type="radio">D&iacutea</label>
+                        </div>
+                        <div class="btn-group" data-toggle="modal" data-target="#myModal">
+                            <button class="btn btn-sm btn-dark btn-icon"title="Agregar Evento" type="button"><i class="fa fa-plus" ></i></button>
+                            <div class="btn-group hidden-nav-xs">
+                                <button class="btn btn-sm btn-primary"type="submit">Agregar Evento <span class="caret"></span></button>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="calendar" id="calendar">
+                    </div>
+                    <div id="fullCalModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"> x </span> <span class="sr-only">close</span></button>
+                                    <h4 id="modalTitle" class="modal-title"></h4>
                                 </div>
-                                <div id="fullCalModal" class="modal fade">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"> x </span> <span class="sr-only">close</span></button>
-                                            <h4 id="modalTitle" class="modal-title"></h4>
-                                        </div>
-                                        <div id="modalBody" class="modal-body"></div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">ok</button>
-                                        </div>
-                                    </div>
+                                <div id="modalBody" class="modal-body"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">ok</button>
                                 </div>
                             </div>
-                        </section>
-        </section>
+                        </div>
+                    </div>
+                </section>
+            </section>
         </section>
     </section>
-    <!-- Bootstrap --><!-- App -->
-    <script src="/js/app.v1.js"></script> 
-    <!-- fuelux -->
-    <script src="/js/fuelux.js"></script>
-    <!-- fullcalendar -->
-    <script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="/js/fullcalendar.min.js"></script>
-    <script src="/js/demo.js"></script>
-    <script src="/js/app.plugin.js"></script>
 </body>
-</html>

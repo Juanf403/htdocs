@@ -6,13 +6,14 @@ if ( isset($_POST['tarea']) ){
 	$estado 	= mysql_real_escape_string($_POST['estado']);
 	$asignar 	= mysql_real_escape_string($_POST['asignar']);
 	$tarea   	= mysql_real_escape_string($_POST['tarea']);
+	$descrip    = mysql_real_escape_string($_POST['descripcion']);
 
 	if ($estado == "Finalizado"){
 		$sql = ",fechafinal='".date("Y/m/d")."'";
 	} else {
 		$sql = "";
 	}
-	if ( mysql_query("UPDATE tareas SET idasignado='".$asignar."',tarea='".$tarea."',estado='".$estado."'".$sql." WHERE idtareas='".$id."'") ){
+	if ( mysql_query("UPDATE tareas SET idasignado='".$asignar."',tarea='".$tarea."',descripcion='".$descrip."',estado='".$estado."'".$sql." WHERE idtareas='".$id."'") ){
 		$errorMsg = '<div class="alert alert-success">
 			<i class="fa fa-check"></i> Tarea editada correctamente.
 		</div>';
@@ -49,9 +50,17 @@ $data = mysql_fetch_object(mysql_query("SELECT * FROM tareas WHERE idtareas='".$
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Tarea</label>
 								<div class="col-lg-10">
-									<textarea name="tarea" class="form-control" style="height:200px;"><?php echo $data->tarea; ?></textarea>
+									<input type="text" class="form-control" value=" <?php echo $data->tarea; ?>">
 								</div>
 							</div>							
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label class="col-md-2 control-label" for="">Descripcion</label>
+								<div class="col-md-10">
+									<textarea name="descripcion" class="form-control" style="height:200px;"><?php echo $data->descripcion; ?></textarea>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
