@@ -50,7 +50,7 @@ $data = mysql_fetch_object(mysql_query("SELECT * FROM tareas WHERE idtareas='".$
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Tarea</label>
 								<div class="col-lg-10">
-									<input type="text" class="form-control" value=" <?php echo $data->tarea; ?>">
+									<input name="tarea" type="text" class="form-control" value="<?php echo $data->tarea; ?>">
 								</div>
 							</div>							
 						</div>

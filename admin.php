@@ -22,6 +22,10 @@ if ( isset($_GET['m']) ){
 		case "tareasEditar":
 			$paginaPHP = "php/tareasEditar.php";
 		break;
+		case "tareasVer":
+			$paginaPHP = "php/tareasVer.php";
+		break;
+		
 
 		/* citas */
 		case "citas":

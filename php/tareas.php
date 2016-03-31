@@ -13,13 +13,14 @@
 		<table class="table table-striped b-t b-light" id="diagnosis_list">
 			<thead>
 				<tr>
+					<th width="40"></th>
 					<th width="100">Fecha</th>
 					<th>Tarea</th>
 					<th width="100">Estado</th>
 					<th width="150">Asignado a</th>
 					<th width="150">Creado Por</th>
 					
-					<th width="120"></th>
+					<th width="260"></th>
 					<?php 
 						if ( isset($_GET['estado']) ){
 							$estado = sqli($_GET['estado']);
@@ -39,6 +40,8 @@
 				mysql_query("DELETE FROM tareas WHERE idtareas='".$_GET['del']."'");
 			} else if ( isset($_GET['finalizado']) ){
 				mysql_query("UPDATE tareas SET estado='Finalizado',fechafinal='".date("Y/m/d")."' WHERE idtareas='".$_GET['finalizado']."'");
+			} else if ( isset($_GET['reactivar']) ){
+				mysql_query("UPDATE tareas SET estado='Pendiente',fechafinal='".date("NULL")."' WHERE idtareas='".$_GET['reactivar']."'");
 			}
 
 			if ( isset($_GET['estado']) ){
@@ -70,6 +73,7 @@
 				}
 ?>
 				<tr>
+					<td><a href="admin.php?m=tareasVer&id=<?php echo $v->idtareas; ?>" class="btn btn-sm btn-info"> <i class="fa fa-eye"></i></a></td>
 					<td class=""><?php echo $v->fecha; ?></td>
 					<td class="">
 						<?php
@@ -100,6 +104,19 @@
 ?>
 						<a href="admin.php?m=tareasEditar&id=<?php echo $v->idtareas; ?>" class="btn btn-sm btn-default"> <i class="fa fa-pencil"></i> </a> &nbsp;&nbsp;&nbsp;
 						<a href="admin.php?m=tareas&del=<?php echo $v->idtareas; ?>" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>
+						&nbsp;&nbsp;&nbsp;
+<?php 
+						if ($v->estado == "Pendiente") {
+ ?>						
+						<a href="admin.php?m=tareas&finalizado=<?php echo $v->idtareas; 
+						?>" class="btn btn-sm btn-success"> <i class="fa fa-check"></i> Finalizado</a>
+<?php 
+						}else{
+?>						
+						<a href="admin.php?m=tareas&estado=Finalizado&reactivar=<?php echo $v->idtareas; ?>" class="btn btn-sm btn-warning"> <i class="fa fa-undo"></i> Reactivar</a>
+<?php  
+						}
+?>	
 <?php
 					} else {
 						if ($v->estado != "Finalizado"){
